@@ -10,8 +10,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 #  подготовка файлов
-path_to_file = r'C:/Users/VADIK/Documents/ВШЭ/final/data/IR-2021-2022/HW_1/friends-data.zip'
-path = r'C:/Users/VADIK/Documents/ВШЭ/final/data/IR-2021-2022/HW_2'
+path_to_file = input('Введите путь до файла: ')
+path = r'./'
 if not os.path.exists(path):
     os.mkdir(path)
 with zipfile.ZipFile(path_to_file, 'r') as zip_ref:
