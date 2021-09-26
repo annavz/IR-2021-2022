@@ -10,7 +10,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 
 path_to_file = r'C:\Users\VADIK\Documents\ВШЭ\final\data\IR-2021-2022\HW_1\friends-data.zip'
-path = r'C:\Users\VADIK\Documents\ВШЭ\final\data\IR-2021-2022\HW_1'
+path = r'./'
 with zipfile.ZipFile(path_to_file, 'r') as zip_ref:
     zip_ref.extractall(path)
 
@@ -32,15 +32,15 @@ for num, row in df.iterrows():
 
 
 def preprocessing(text, morph, russian_stopwords):
-  text = re.sub('\n', ' ', text, flags=re.DOTALL)
-  preprocessed_text = []
-  text = nltk.word_tokenize(text)
-  for token in text:
-    if re.sub('-', '', token).isalpha():
-      token = morph.parse(token)[0].normal_form.lower()
-      if token not in russian_stopwords:
-        preprocessed_text.append(token)
-  return ' '.join(preprocessed_text)
+    text = re.sub('\n', ' ', text, flags=re.DOTALL)
+    preprocessed_text = []
+    text = nltk.word_tokenize(text)
+    for token in text:
+        if re.sub('-', '', token).isalpha():
+            token = morph.parse(token)[0].normal_form.lower()
+            if token not in russian_stopwords:
+                preprocessed_text.append(token)
+    return ' '.join(preprocessed_text)
 
 
 morph = pymorphy2.MorphAnalyzer()
